@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Rhetos;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Bookstore.Service
@@ -49,6 +52,7 @@ namespace Bookstore.Service
             services.AddRhetosHost(ConfigureRhetosHostBuilder)
                 .AddAspNetCoreIdentityUser()
                 .AddLoggingIntegration()
+                .AddLocalizationIntegration()
                 .AddImpersonation()
                 .AddRestApi(o =>
                 {
@@ -63,6 +67,12 @@ namespace Bookstore.Service
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                     return Task.CompletedTask;
                 });
+
+            services.AddLocalization()
+                .AddPortableObjectLocalization(options => options.ResourcesPath = "Localization")
+                //OrchadCore.Localization.Core uses the IMemoryCache but no default registration is provided in the
+                //AddPortableObjectLocalization method so we must register an implementation for the IMemoryCache.
+                .AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +92,27 @@ namespace Bookstore.Service
             app.UseRhetosRestApi();
 
             app.UseRouting();
+
+            app.UseRequestLocalization(options =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("hr")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    //The culture will be resolved based on the query parameter.
+                    //For example if we want the validation message to be translated to Croatian
+                    //we can call the POST method rest/Bookstore/Book?culture=hr and insert a json object without the 'Title' property.
+                    //It can be configured so that the culture gets resolved based on cookies or headers.
+                    new QueryStringRequestCultureProvider()
+                };
+            });
 
             app.UseAuthentication();
 
