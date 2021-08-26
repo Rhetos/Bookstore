@@ -50,6 +50,7 @@ namespace Bookstore.Service
                 .AddAspNetCoreIdentityUser()
                 .AddHostLogging()
                 .AddImpersonation()
+                .AddDashboard()
                 .AddRestApi(o =>
                 {
                     o.BaseRoute = "rest";
@@ -92,6 +93,7 @@ namespace Bookstore.Service
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRhetosDashboard();
             });
         }
 
