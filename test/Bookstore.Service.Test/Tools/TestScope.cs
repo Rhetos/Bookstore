@@ -33,8 +33,7 @@ namespace Bookstore.Service.Test.Tools
         /// Reusing a single shared static DI container between tests, to reduce initialization time for each test.
         /// Each test should create a child scope with <see cref="TestScope.Create"/> method to start a 'using' block.
         /// </summary>
-        private static readonly RhetosHost _rhetosHost = RhetosHost
-            .Find(Path.GetFullPath(@"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll"), ConfigureRhetosHostBuilder);
+        private static readonly RhetosHost _rhetosHost = RhetosHost.CreateFrom(Path.GetFullPath(@"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll"), ConfigureRhetosHostBuilder);
 
         private static void ConfigureRhetosHostBuilder(IRhetosHostBuilder rhetosHostBuilder)
         {

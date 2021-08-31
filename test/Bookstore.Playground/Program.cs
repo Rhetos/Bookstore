@@ -15,7 +15,7 @@ namespace Bookstore.Playground
         {
             ConsoleLogger.MinLevel = EventType.Info; // Use EventType.Trace for more detailed log.
             string rhetosHostAssemblyPath = Path.GetFullPath(@"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll");
-            var rhetosHost = RhetosHost.Find(rhetosHostAssemblyPath, RhetosHostBuilderConfiguration);
+            var rhetosHost = RhetosHost.CreateFrom(rhetosHostAssemblyPath, RhetosHostBuilderConfiguration);
             using (var scope = rhetosHost.CreateScope())
             {
                 var context = scope.Resolve<Common.ExecutionContext>();
