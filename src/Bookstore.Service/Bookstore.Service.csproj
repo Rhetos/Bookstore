@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.3" />
+    <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-rc2-13450" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.*" />
     <PackageReference Include="NLog" Version="4.7.*" />
     <PackageReference Include="Rhetos.CommonConcepts" Version="5.0.0-dev*" />
@@ -24,6 +25,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <None Update="Localization\hr.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="rhetos-app.local.settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

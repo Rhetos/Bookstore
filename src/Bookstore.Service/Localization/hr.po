@@ -1,0 +1,3 @@
+﻿msgctxt "Rhetos"
+msgid "It is not allowed to enter {0} because the required property {1} is not set."
+msgstr "Nije dozvoljen unos zapisa {0} jer polje {1} nije zadano."
