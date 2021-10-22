@@ -25,7 +25,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Update="Localization\hr.po">
+    <None Update="Localization\en.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="rhetos-app.local.settings.json">
