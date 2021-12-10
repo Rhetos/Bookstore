@@ -1,3 +1,12 @@
-﻿msgctxt "Rhetos"
-msgid "It is not allowed to enter {0} because the required property {1} is not set."
-msgstr "It is not allowed to enter {0} with empty field {1}. (customized message)"
+﻿msgid "It is not allowed to enter {0} because the required property {1} is not set."
+msgstr "Please fill out the field '{0}' on '{1}'. (customized message)"
+
+msgid "NumberOfPages"
+msgstr "Number of pages"
+
+msgid "AuthorID"
+msgstr "Author"
+
+msgctxt "Bookstore.Book"
+msgid "AuthorID"
+msgstr "Author of the book"
