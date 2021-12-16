@@ -2,6 +2,7 @@
 using Rhetos;
 using Rhetos.Dom.DefaultConcepts;
 using Rhetos.Host.AspNet.RestApi.Filters;
+using System.Threading.Tasks;
 
 namespace Bookstore.Service.Controllers
 {
@@ -12,9 +13,10 @@ namespace Bookstore.Service.Controllers
     /// 1. ApiExceptionFilter returns JSON error response on exception, with a user message for Rhetos.UserException, same as Rhetos REST API,
     /// 2. ApiCommitOnSuccessFilter commits Rhetos unit of work (IUnitOfWork) on successful web request.
     /// </summary>
-    [Route("Book")]
+    [Route("rest/Bookstore/Book/[action]")]
     [ServiceFilter(typeof(ApiExceptionFilter))]
     [ServiceFilter(typeof(ApiCommitOnSuccessFilter))]
+    [ApiExplorerSettings(GroupName = "v1")] // Avoids overriding Swagger information on Rhetos REST.
     public class BookController : ControllerBase
     {
         private readonly Common.ExecutionContext _context;
@@ -26,6 +28,12 @@ namespace Bookstore.Service.Controllers
         public BookController(IRhetosComponent<Common.ExecutionContext> context)
         {
             _context = context.Value;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<Book>> GetCustomBook()
+        {
+            return new Book { Title = "some custom book" };
         }
 
         [HttpPost]
