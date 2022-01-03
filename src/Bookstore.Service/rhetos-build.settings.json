@@ -1,1 +1,7 @@
-{}
+{
+  "Rhetos": {
+    "Build": {
+      "MaxExecuteGeneratorsParallelism": 1
+    }
+  }
+}
