@@ -17,6 +17,9 @@ that implements business features and database.
   Other web protocols can be included with additional Rhetos plugins packages,
   or by implementing custom controllers.
 
+Note that this application uses Rhetos v5.
+For demo application on Rhetos v4, use branch [rhetos-4](https://github.com/Rhetos/Bookstore/tree/rhetos-4).
+
 ## Build and initial setup
 
 Initial database setup:
