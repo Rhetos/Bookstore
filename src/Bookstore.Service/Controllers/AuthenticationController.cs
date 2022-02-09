@@ -33,7 +33,7 @@ namespace Bookstore.Service.Controllers
         }
 
         [HttpGet]
-        public async Task Logout(string username)
+        public async Task Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new AuthenticationProperties() { IsPersistent = true });
@@ -42,17 +42,14 @@ namespace Bookstore.Service.Controllers
         [HttpGet]
         public string DemoProcessingEngine()
         {
-            var processingResult = processingEngine.Execute(new[] {
+            var result = processingEngine.Execute(
                 new ReadCommandInfo
                 {
                     DataSource = "AuthenticationDemo.UserInfoReport",
                     ReadRecords = true
-                }});
+                });
 
-            if (!processingResult.Success)
-                return $"UserMessage:{processingResult.UserMessage}{Environment.NewLine}SystemMessage:{processingResult.SystemMessage}";
-
-            var records = (IEnumerable<AuthenticationDemo.UserInfoReport>)((ReadCommandResult)processingResult.CommandResults.Single().Data.Value).Records;
+            var records = (IEnumerable<AuthenticationDemo.UserInfoReport>)result.Records;
 
             return "UserInfo:" + Environment.NewLine
                 + string.Join(Environment.NewLine, records.Select(record => $"{record.Key}: {record.Value}"));
