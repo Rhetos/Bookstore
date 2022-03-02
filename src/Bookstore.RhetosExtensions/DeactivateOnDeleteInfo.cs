@@ -2,7 +2,7 @@
 using Rhetos.Dsl;
 using Rhetos.Dsl.DefaultConcepts;
 
-namespace Bookstore.Concepts
+namespace Bookstore.RhetosExtensions
 {
     /// <summary>
     /// When user tries to deletes the records, it will automatically modify the operation deactivate those records instead

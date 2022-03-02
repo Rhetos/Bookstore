@@ -49,7 +49,7 @@ Testing in web browser:
 
 * **Bookstore.Service** - Main application (business service).
 * Bookstore.Service.Test - Unit tests and integration tests.
-* Bookstore.Concepts - Custom concepts library that extend Rhetos DSL programming language
+* Bookstore.RhetosExtensions - Custom concepts library that extend Rhetos DSL programming language
   with features specific to this application.
 * Bookstore.Playground - Example of a command-line utility that uses the generated business
   object model from Bookstore.Service.

@@ -2,7 +2,7 @@
   <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.dll">..\bin\Debug\net5.0\Bookstore.Service.dll</Reference>
   <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.deps.json">..\bin\Debug\net5.0\Bookstore.Service.deps.json</Reference>
   <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.runtimeconfig.json">..\bin\Debug\net5.0\Bookstore.Service.runtimeconfig.json</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Bookstore.Concepts.dll">..\bin\Debug\net5.0\Bookstore.Concepts.dll</Reference>
+  <Reference Relative="..\bin\Debug\net5.0\Bookstore.RhetosExtensions.dll">..\bin\Debug\net5.0\Bookstore.RhetosExtensions.dll</Reference>
   <Reference Relative="..\bin\Debug\net5.0\Autofac.dll">..\bin\Debug\net5.0\Autofac.dll</Reference>
   <Reference Relative="..\bin\Debug\net5.0\EntityFramework.dll">..\bin\Debug\net5.0\EntityFramework.dll</Reference>
   <Reference Relative="..\bin\Debug\net5.0\EntityFramework.SqlServer.dll">..\bin\Debug\net5.0\EntityFramework.SqlServer.dll</Reference>

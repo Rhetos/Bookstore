@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Concepts", "src\Bookstore.Concepts\Bookstore.Concepts.csproj", "{1FC8A5E9-CEEF-4FDB-B781-EDA06B14817C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.RhetosExtensions", "src\Bookstore.RhetosExtensions\Bookstore.RhetosExtensions.csproj", "{1FC8A5E9-CEEF-4FDB-B781-EDA06B14817C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Service", "src\Bookstore.Service\Bookstore.Service.csproj", "{E3EA6B67-E61D-456B-90E5-1D8FDF9E0962}"
 EndProject

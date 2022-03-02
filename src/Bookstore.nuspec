@@ -23,7 +23,7 @@
     <file src="..\Readme.md" target="" />
     <file src="Bookstore.Service\DslScripts\**\*" target="DslScripts" />
     <file src="Bookstore.Service\DataMigration\**\*" target="DataMigration" />
-    <file src="Bookstore.Concepts\bin\Debug\net5.0\Bookstore.Concepts.pdb" target="lib\net5.0" />
-    <file src="Bookstore.Concepts\bin\Debug\net5.0\Bookstore.Concepts.dll" target="lib\net5.0" />
+    <file src="Bookstore.RhetosExtensions\bin\Debug\net5.0\Bookstore.RhetosExtensions.pdb" target="lib\net5.0" />
+    <file src="Bookstore.RhetosExtensions\bin\Debug\net5.0\Bookstore.RhetosExtensions.dll" target="lib\net5.0" />
   </files>
 </package>

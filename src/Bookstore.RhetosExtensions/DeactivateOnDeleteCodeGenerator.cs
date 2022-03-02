@@ -5,7 +5,7 @@ using Rhetos.Dom.DefaultConcepts;
 using Rhetos.Dsl;
 using Rhetos.Extensibility;
 
-namespace Bookstore.Concepts
+namespace Bookstore.RhetosExtensions
 {
     [Export(typeof(IConceptCodeGenerator))]
     [ExportMetadata(MefProvider.Implements, typeof(DeactivateOnDeleteInfo))]

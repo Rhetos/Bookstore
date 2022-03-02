@@ -5,7 +5,7 @@ using Rhetos.Dsl;
 using Rhetos.Dsl.DefaultConcepts;
 using Rhetos.Extensibility;
 
-namespace Bookstore.Concepts
+namespace Bookstore.RhetosExtensions
 {
     [Export(typeof(IConceptInfo))]
     [ConceptKeyword("ComplexProperty")]

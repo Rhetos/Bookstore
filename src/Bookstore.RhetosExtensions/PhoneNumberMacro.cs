@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 using Rhetos.Dsl;
 using Rhetos.Dsl.DefaultConcepts;
 
-namespace Bookstore.Concepts
+namespace Bookstore.RhetosExtensions
 {
     [Export(typeof(IConceptMacro))]
     public class PhoneNumberMacro : IConceptMacro<PhoneNumberInfo>

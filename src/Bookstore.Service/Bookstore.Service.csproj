@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookstore.Concepts\Bookstore.Concepts.csproj" />
+    <ProjectReference Include="..\Bookstore.RhetosExtensions\Bookstore.RhetosExtensions.csproj" />
   </ItemGroup>
   
   <ItemGroup>
