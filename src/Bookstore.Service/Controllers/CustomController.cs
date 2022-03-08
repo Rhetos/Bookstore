@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Rhetos;
+using Rhetos.Logging;
 using Rhetos.Processing;
 using Rhetos.Processing.DefaultCommands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Bookstore.Service.Controllers
 {
@@ -17,15 +14,20 @@ namespace Bookstore.Service.Controllers
     {
         private readonly IProcessingEngine processingEngine;
         private readonly IUnitOfWork unitOfWork;
+        private readonly ILogger<CustomController> aspNetLogger;
+        private readonly Rhetos.Logging.ILogger rhetosLogger;
 
-        public CustomController(IRhetosComponent<IProcessingEngine> rhetosProcessingEngine, IRhetosComponent<IUnitOfWork> rhetosUnitOfWork)
+        public CustomController(IRhetosComponent<IProcessingEngine> processingEngine, IRhetosComponent<IUnitOfWork> unitOfWork,
+            ILogger<CustomController> aspNetLogger, IRhetosComponent<ILogProvider> rhetosLogProvider)
         {
-            processingEngine = rhetosProcessingEngine.Value;
-            unitOfWork = rhetosUnitOfWork.Value;
+            this.processingEngine = processingEngine.Value;
+            this.unitOfWork = unitOfWork.Value;
+            this.aspNetLogger = aspNetLogger;
+            rhetosLogger = rhetosLogProvider.Value.GetLogger(GetType().Name);
         }
 
         [HttpGet]
-        public ActionResult<string> AddLog(bool throwException)
+        public ActionResult<string> DatabaseLog(bool throwException)
         {
             var addLogCommand = new ExecuteActionCommandInfo
             {
@@ -55,6 +57,22 @@ namespace Bookstore.Service.Controllers
             unitOfWork.CommitAndClose();
 
             return report;
+        }
+
+        [HttpGet]
+        public ActionResult<string> SystemLog()
+        {
+            aspNetLogger.LogTrace("ASP.NET log trace.");
+            aspNetLogger.LogInformation("ASP.NET log info.");
+            aspNetLogger.LogWarning("ASP.NET log warning.");
+            aspNetLogger.LogError("ASP.NET log error.");
+
+            rhetosLogger.Trace("Rhetos log trace.");
+            rhetosLogger.Info("Rhetos log info.");
+            rhetosLogger.Warning("Rhetos log warning.");
+            rhetosLogger.Error("Rhetos log error.");
+
+            return "Review the application's log file, console output or Windows event log.";
         }
     }
 }
