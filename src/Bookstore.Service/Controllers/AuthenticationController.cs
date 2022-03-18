@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Rhetos;
 using Rhetos.Processing;
 using Rhetos.Processing.DefaultCommands;
@@ -16,16 +18,21 @@ namespace Bookstore.Service.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IProcessingEngine processingEngine;
+        private readonly IWebHostEnvironment env;
 
-        public AuthenticationController(IRhetosComponent<IProcessingEngine> rhetosProcessingEngine)
+        public AuthenticationController(IRhetosComponent<IProcessingEngine> rhetosProcessingEngine, IWebHostEnvironment env)
         {
             processingEngine = rhetosProcessingEngine.Value;
+            this.env = env;
         }
 
         [HttpGet]
         public async Task Login(string username)
         {
-            // Overly simplified authentication without a password, for demo purpose only.
+            // This is overly simplified authentication without a password, for demo purpose only.
+            if (!env.IsDevelopment())
+                throw new NotSupportedException();
+
             var claimsIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, username) }, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
