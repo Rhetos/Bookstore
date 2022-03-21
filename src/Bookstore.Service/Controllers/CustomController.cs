@@ -5,6 +5,7 @@ using Rhetos.Logging;
 using Rhetos.Processing;
 using Rhetos.Processing.DefaultCommands;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bookstore.Service.Controllers
@@ -73,6 +74,22 @@ namespace Bookstore.Service.Controllers
             rhetosLogger.Error("Rhetos log error.");
 
             return "Review the application's log file, console output or Windows event log.";
+        }
+
+        [HttpGet]
+        public string DemoProcessingEngine()
+        {
+            var result = processingEngine.Execute(
+                new ReadCommandInfo
+                {
+                    DataSource = "AuthenticationDemo.UserInfoReport",
+                    ReadRecords = true
+                });
+
+            var records = (IEnumerable<AuthenticationDemo.UserInfoReport>)result.Records;
+
+            return "UserInfo:" + Environment.NewLine
+                + string.Join(Environment.NewLine, records.Select(record => $"{record.Key}: {record.Value}"));
         }
     }
 }
