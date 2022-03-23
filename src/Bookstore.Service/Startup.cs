@@ -124,7 +124,8 @@ namespace Bookstore.Service
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapRhetosDashboard();
+                if (env.IsDevelopment())
+                    endpoints.MapRhetosDashboard();
             });
         }
 
