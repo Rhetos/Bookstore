@@ -7,7 +7,7 @@
 
   <metadata>
     <id>Bookstore</id>
-    <version>1.0.0-dev</version>
+    <version>5.0.0-dev</version>
     <authors>Omega software</authors>
     <owners>Omega software</owners>
     <licenseUrl>http://opensource.org/licenses/AGPL-3.0</licenseUrl>
@@ -16,7 +16,7 @@
     <copyright>Copyright Omega software 2018</copyright>
     <tags>Rhetos plugin</tags>
     <dependencies>
-      <dependency id="Rhetos.CommonConcepts" version="5.0.0-dev" />
+      <dependency id="Rhetos.CommonConcepts" version="5.0.0" />
     </dependencies>
   </metadata>
   <files>

@@ -9,14 +9,14 @@
     <PackageReference Include="OrchardCore.Localization.Core" Version="1.1.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.14.0" />
     <PackageReference Include="NLog" Version="4.7.*" />
-    <PackageReference Include="Rhetos.CommonConcepts" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.Host.AspNet.Impersonation" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.Host.AspNet" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.Host" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.Impersonation" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.MSBuild" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos.RestGenerator" Version="5.0.0-dev*" />
-    <PackageReference Include="Rhetos" Version="5.0.0-dev*" />
+    <PackageReference Include="Rhetos.CommonConcepts" Version="5.0.0" />
+    <PackageReference Include="Rhetos.Host.AspNet.Impersonation" Version="5.0.0" />
+    <PackageReference Include="Rhetos.Host.AspNet" Version="5.0.0" />
+    <PackageReference Include="Rhetos.Host" Version="5.0.0" />
+    <PackageReference Include="Rhetos.Impersonation" Version="5.0.0" />
+    <PackageReference Include="Rhetos.MSBuild" Version="5.0.0" />
+    <PackageReference Include="Rhetos.RestGenerator" Version="5.0.0" />
+    <PackageReference Include="Rhetos" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
