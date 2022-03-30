@@ -51,6 +51,7 @@ namespace Bookstore.Service
             // Adding Rhetos to AspNetCore application.
             services.AddRhetosHost(ConfigureRhetosHostBuilder)
                 .AddAspNetCoreIdentityUser()
+                .AddAspNetFormsAuth()
                 .AddHostLogging()
                 .AddHostLocalization()
                 .AddImpersonation()
@@ -62,12 +63,12 @@ namespace Bookstore.Service
                 });
 
             // Configuring Authentication.
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(o => o.Events.OnRedirectToLogin = context =>
-                {
-                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    return Task.CompletedTask;
-                });
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(o => o.Events.OnRedirectToLogin = context =>
+            //    {
+            //        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            //        return Task.CompletedTask;
+            //    });
 
             services.AddLocalization()
                 .AddPortableObjectLocalization(options => options.ResourcesPath = "Localization")
@@ -115,6 +116,7 @@ namespace Bookstore.Service
                 };
             });
 
+            app.UseRhetosAspNetFormsAuth();
             app.UseAuthentication();
 
             app.UseAuthorization();
