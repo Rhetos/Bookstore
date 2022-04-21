@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bookstore.Service.Controllers.Rhetos520;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Rhetos;
+using Rhetos.Dom.DefaultConcepts;
 using Rhetos.Logging;
 using Rhetos.Processing;
 using Rhetos.Processing.DefaultCommands;
+using Rhetos.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Bookstore.Service.Controllers
 {
@@ -17,14 +21,23 @@ namespace Bookstore.Service.Controllers
         private readonly IUnitOfWork unitOfWork;
         private readonly ILogger<CustomController> aspNetLogger;
         private readonly Rhetos.Logging.ILogger rhetosLogger;
+        private readonly Common.ExecutionContext executionContext;
+        private readonly ServerCommandsUtility520 serverCommandsUtility;
 
-        public CustomController(IRhetosComponent<IProcessingEngine> processingEngine, IRhetosComponent<IUnitOfWork> unitOfWork,
-            ILogger<CustomController> aspNetLogger, IRhetosComponent<ILogProvider> rhetosLogProvider)
+        public CustomController(
+            IRhetosComponent<IProcessingEngine> processingEngine,
+            IRhetosComponent<IUnitOfWork> unitOfWork,
+            ILogger<CustomController> aspNetLogger,
+            IRhetosComponent<ILogProvider> rhetosLogProvider,
+            IRhetosComponent<Common.ExecutionContext> executionContext,
+            IRhetosComponent<ServerCommandsUtility520> serverCommandsUtility)
         {
             this.processingEngine = processingEngine.Value;
             this.unitOfWork = unitOfWork.Value;
             this.aspNetLogger = aspNetLogger;
-            rhetosLogger = rhetosLogProvider.Value.GetLogger(GetType().Name);
+            this.rhetosLogger = rhetosLogProvider.Value.GetLogger(GetType().Name);
+            this.executionContext = executionContext.Value;
+            this.serverCommandsUtility = serverCommandsUtility.Value;
         }
 
         [HttpGet]
@@ -79,6 +92,8 @@ namespace Bookstore.Service.Controllers
         [HttpGet]
         public string DemoProcessingEngine()
         {
+            // PERMISSIONS: When using IProcessingEngine, it will automatically verify user's claims and row permissions.
+
             var result = processingEngine.Execute(
                 new ReadCommandInfo
                 {
@@ -90,6 +105,58 @@ namespace Bookstore.Service.Controllers
 
             return "UserInfo:" + Environment.NewLine
                 + string.Join(Environment.NewLine, records.Select(record => $"{record.Key}: {record.Value}"));
+        }
+
+        [HttpGet]
+        public ActionResult<object> DemoCustomRead(string titlePrefix)
+        {
+            // PERMISSIONS: When using repository classes directly, we need to manually verify user's claims and row permissions.
+
+            if (!UserHasClaim("DemoRowPermissions2.Document", "DemoCustomRead"))
+                return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (claim).");
+
+            if (titlePrefix == null)
+                titlePrefix = "";
+            var documents = executionContext.Repository.DemoRowPermissions2.Document.Query(doc => doc.Title.StartsWith(titlePrefix)).Take(3).ToSimple().ToArray();
+
+            if (!serverCommandsUtility.ForEntity("DemoRowPermissions2.Document").UserHasReadRowPermissions(documents))
+                return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (read row permissions).");
+
+            return documents;
+        }
+
+        [HttpGet]
+        public ActionResult<object> DemoCustomWrite(
+            DemoRowPermissions2.Document[] insertItems,
+            DemoRowPermissions2.Document[] updateItems,
+            DemoRowPermissions2.Document[] deleteItems)
+        {
+            // PERMISSIONS: When using repository classes directly, we need to manually verify user's claims and row permissions.
+            // The method does not need to have all three arguments, but this sample shows how to verify each type of operation differently
+            // with UserHasWriteRowPermissionsBeforeSave and/or UserHasWriteRowPermissionsAfterSave.
+
+            if (!UserHasClaim("DemoRowPermissions2.Document", "DemoCustomWrite"))
+                return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (claim).");
+
+            var entityCommandsUtility = serverCommandsUtility.ForEntity("DemoRowPermissions2.Document");
+            if (!entityCommandsUtility.UserHasWriteRowPermissionsBeforeSave(deleteItems, updateItems))
+                return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (write row permissions on existing data).");
+
+            executionContext.Repository.DemoRowPermissions2.Document.Save(
+                insertItems, updateItems, deleteItems,
+                checkUserPermissions: true); // IMPORTANT: Set checkUserPermissions to activate additional validations in the repository class such as DenyUserEdit.
+
+            if (!entityCommandsUtility.UserHasWriteRowPermissionsAfterSave(insertItems, updateItems))
+                return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (write row permissions on new data).");
+
+            unitOfWork.CommitAndClose();
+            return Ok();
+        }
+
+        private bool UserHasClaim(string resource, string right)
+        {
+            var claim = new Claim(resource, right);
+            return executionContext.AuthorizationManager.GetAuthorizations(new[] { claim }).Single();
         }
     }
 }

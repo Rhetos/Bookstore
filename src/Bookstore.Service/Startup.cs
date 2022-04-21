@@ -1,4 +1,5 @@
 using Autofac;
+using Bookstore.Service.Controllers.Rhetos520;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -144,6 +145,7 @@ namespace Bookstore.Service
                     // Registering custom components for Bookstore application:
                     builder.RegisterType<Bookstore.SmtpMailSender>().As<Bookstore.IMailSender>(); // Application uses SMTP implementation for sending mails. The registration will be overridden in unit tests by fake component.
                     builder.Register(context => context.Resolve<Rhetos.Utilities.IConfiguration>().GetOptions<Bookstore.MailOptions>()).SingleInstance(); // Standard pattern for registering an options class.
+                    builder.RegisterType<ServerCommandsUtility520>();
                 });
         }
     }

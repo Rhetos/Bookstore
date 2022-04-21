@@ -62,3 +62,6 @@ Module DemoRowPermissions2
         }
     }
 }
+
+CustomClaim "DemoRowPermissions2.Document" "DemoCustomRead";
+CustomClaim "DemoRowPermissions2.Document" "DemoCustomWrite";
