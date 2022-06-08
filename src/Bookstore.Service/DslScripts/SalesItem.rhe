@@ -49,7 +49,7 @@ Module Bookstore
 
     Entity Food
     {
-        ShortString Code { AutoCode; DefaultValue 'item => "B+++"'; }
+        ShortString Code { AutoCode; DefaultValue 'item => "F+++"'; }
         Money Price { Required; }
         ShortString Description;
         Integer Calories;
@@ -59,7 +59,7 @@ Module Bookstore
 
     Entity Book
     {
-        ShortString Code { AutoCode; DefaultValue 'item => "F+++"'; }
+        ShortString Code { AutoCode; DefaultValue 'item => "B+++"'; }
         Money Price; // Not required. Some books are not on sale.
         ShortString Title { Required; }
         Integer NumberOfPages;
