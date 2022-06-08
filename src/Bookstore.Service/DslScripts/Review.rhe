@@ -98,7 +98,7 @@ Module Bookstore
         //=================================================
         // RepositoryUses example:
 
-        RepositoryUses _configuration 'Rhetos.Utilities.IConfiguration, Rhetos.Utilities';
+        RepositoryUses _configuration 'Rhetos.Utilities.IConfiguration';
 
         ComposableFilterBy LongReviews '(query, repository, parameter) =>
             {

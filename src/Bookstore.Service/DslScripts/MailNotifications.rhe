@@ -22,7 +22,7 @@ Module Bookstore
 
         // Add the _mailSender property (of type IMailSender, resolved from DI container) to the Book repository class,
         // so that it can be used in filters, SaveMethod, and other business features on the Book entity.
-        RepositoryUses '_mailSender' 'Bookstore.IMailSender';
+        RepositoryUses _mailSender 'Bookstore.IMailSender';
 
         // DISCLAIMER: The example above only demonstrates usage of dependency injection in DSL scripts
         // and fake components in unit tests.
