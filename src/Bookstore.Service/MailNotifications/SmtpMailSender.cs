@@ -5,7 +5,7 @@ using System.Net.Mail;
 namespace Bookstore
 {
     /// <summary>
-    /// This class demonstrates usage of Dependency Injection in Rhetos applications:
+    /// This class demonstrates usage of Dependency Injection in Rhetos apps:
     ///   (1) System automatically provides other components in the constructor of this class.
     ///   (2) Classes <see cref="SmtpMailSender"/> and <see cref="MailOptions"/> are registered
     ///       to DI container in <see cref="Rhetos.RhetosRuntime"/> class.

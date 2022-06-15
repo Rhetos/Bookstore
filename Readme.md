@@ -1,7 +1,7 @@
 # Bookstore
 
 Bookstore is a demo application for Rhetos development platform.
-This project can be used as a *prototype* for new Rhetos applications,
+This project can be used as a *prototype* for new Rhetos apps,
 regarding its project structure and content.
 
 For the most part, this application is developed by following tutorial articles
@@ -55,7 +55,7 @@ Testing in web browser:
   object model from Bookstore.Service.
 
 Aside from the project structure, please note the following key components that
-most Rhetos applications should contain:
+most Rhetos apps should contain:
 
 1. The build script `Build.ps1`, that does everything needed to produce the application binaries from the source in command prompt,
    such as verifying installed prerequisites and running dotnet build.
