@@ -27,6 +27,7 @@ namespace Bookstore.Service.Test
             using (var scope = TestScope.Create(builder =>
             {
                 builder.ConfigureApplicationUser(testUserName); // Overrides user authentication with custom user info, see the code inside ConfigureApplicationUser.
+                builder.ConfigureOptions<Rhetos.Utilities.AppSecurityOptions>(o => o.AllClaimsForAnonymous = false); // User authorization testing will fail in case the anonymous access is globally allowed.
                 builder.RegisterType<CustomController>();
                 builder.RegisterGeneric(typeof(StubRhetosComponent<>)).As(typeof(IRhetosComponent<>));
                 builder.RegisterGeneric(typeof(TestMsLogger<>)).As(typeof(ILogger<>));
@@ -224,6 +225,7 @@ namespace Bookstore.Service.Test
             using (var scope = TestScope.Create(builder =>
             {
                 builder.ConfigureApplicationUser(testUserName); // Overrides user authentication with custom user info, see the code inside ConfigureApplicationUser.
+                builder.ConfigureOptions<Rhetos.Utilities.AppSecurityOptions>(o => o.AllClaimsForAnonymous = false); // User authorization testing will fail in case the anonymous access is globally allowed.
                 builder.RegisterType<CustomController>();
                 builder.RegisterGeneric(typeof(StubRhetosComponent<>)).As(typeof(IRhetosComponent<>));
                 builder.RegisterGeneric(typeof(TestMsLogger<>)).As(typeof(ILogger<>));
