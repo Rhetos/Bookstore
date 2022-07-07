@@ -18,6 +18,7 @@
 */
 
 using Autofac;
+using Bookstore.Service;
 using Rhetos.Extensibility;
 using Rhetos.HomePage;
 using Rhetos.Logging;
@@ -91,6 +92,10 @@ namespace Rhetos
             // Registering custom components for Bookstore application:
             builder.RegisterType<Bookstore.SmtpMailSender>().As<Bookstore.IMailSender>(); // Application uses SMTP implementation for sending mails. The registration will be overridden in unit tests by fake component.
             builder.Register(context => context.Resolve<IConfiguration>().GetOptions<Bookstore.MailOptions>()).SingleInstance(); // Standard pattern for registering options class.
+
+            if (configuration.GetOptions<PermissionsRecorderOptions>().IsRecordingEnabled()) // Avoid performance overhead if recording is not enabled.
+                builder.RegisterDecorator<PermissionsRecorder, IAuthorizationProvider>();
+            builder.Register(context => context.Resolve<IConfiguration>().GetOptions<PermissionsRecorderOptions>()).SingleInstance();
 
             return builder.Build();
         }
