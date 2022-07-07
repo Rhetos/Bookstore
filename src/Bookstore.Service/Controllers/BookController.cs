@@ -8,6 +8,7 @@ namespace Bookstore.Service.Controllers
     /// <summary>
     /// Example of a custom controller.
     /// It is an alternative to "Action" DSL concept, see "Action InsertManyBooks" in DSL script "Batches.rhe".
+    /// This controller extends the existing REST API (rest/Bookstore/Book) with additional web methods.
     /// The controller uses service filters from Rhetos.RestGenerator:
     /// 1. ApiExceptionFilter returns JSON error response on exception, with a user message for Rhetos.UserException, same as Rhetos REST API,
     /// 2. ApiCommitOnSuccessFilter commits Rhetos unit of work (IUnitOfWork) on successful web request.

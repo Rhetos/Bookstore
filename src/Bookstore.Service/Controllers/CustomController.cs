@@ -1,5 +1,4 @@
-﻿using Bookstore.Service.Controllers.Rhetos520;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Rhetos;
 using Rhetos.Dom.DefaultConcepts;
@@ -22,7 +21,7 @@ namespace Bookstore.Service.Controllers
         private readonly ILogger<CustomController> aspNetLogger;
         private readonly Rhetos.Logging.ILogger rhetosLogger;
         private readonly Common.ExecutionContext executionContext;
-        private readonly ServerCommandsUtility520 serverCommandsUtility;
+        private readonly ServerCommandsUtility serverCommandsUtility;
 
         public CustomController(
             IRhetosComponent<IProcessingEngine> processingEngine,
@@ -30,7 +29,7 @@ namespace Bookstore.Service.Controllers
             ILogger<CustomController> aspNetLogger,
             IRhetosComponent<ILogProvider> rhetosLogProvider,
             IRhetosComponent<Common.ExecutionContext> executionContext,
-            IRhetosComponent<ServerCommandsUtility520> serverCommandsUtility)
+            IRhetosComponent<ServerCommandsUtility> serverCommandsUtility)
         {
             this.processingEngine = processingEngine.Value;
             this.unitOfWork = unitOfWork.Value;
@@ -112,13 +111,17 @@ namespace Bookstore.Service.Controllers
         {
             // PERMISSIONS: When using repository classes directly, we need to manually verify user's claims and row permissions.
 
+            // Verifying user's basic permissions:
+            // CustomClaim 'DemoCustomRead' is defined in DemoRowPermissions2.rhe. We might also use the existing 'Read' claim on DemoRowPermissions2.Document.
             if (!UserHasClaim("DemoRowPermissions2.Document", "DemoCustomRead"))
                 return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (claim).");
 
+            // Feature implementation:
             if (titlePrefix == null)
                 titlePrefix = "";
             var documents = executionContext.Repository.DemoRowPermissions2.Document.Query(doc => doc.Title.StartsWith(titlePrefix)).Take(3).ToSimple().ToArray();
 
+            // Verifying user's read row permissions:
             if (!serverCommandsUtility.ForEntity("DemoRowPermissions2.Document").UserHasReadRowPermissions(documents))
                 return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (read row permissions).");
 
@@ -135,17 +138,21 @@ namespace Bookstore.Service.Controllers
             // The method does not need to have all three arguments, but this sample shows how to verify each type of operation differently
             // with UserHasWriteRowPermissionsBeforeSave and/or UserHasWriteRowPermissionsAfterSave.
 
-            if (!UserHasClaim("DemoRowPermissions2.Document", "DemoCustomWrite"))
+            // Verifying user's basic permissions:
+            if (!UserHasClaim("DemoRowPermissions2.Document", "DemoCustomWrite")) // CustomClaim 'DemoCustomWrite' is defined in DemoRowPermissions2.rhe. We might also use the existing 'New' claim on DemoRowPermissions2.Document.
                 return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (claim).");
 
+            // Verifying user's write row permissions for old data (deleted and updated):
             var entityCommandsUtility = serverCommandsUtility.ForEntity("DemoRowPermissions2.Document");
             if (!entityCommandsUtility.UserHasWriteRowPermissionsBeforeSave(deleteItems, updateItems))
                 return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (write row permissions on existing data).");
 
+            // Feature implementation:
             executionContext.Repository.DemoRowPermissions2.Document.Save(
                 insertItems, updateItems, deleteItems,
                 checkUserPermissions: true); // IMPORTANT: Set checkUserPermissions to activate additional validations in the repository class such as DenyUserEdit.
 
+            // Verifying user's write row permissions for new data (inserted and updated):
             if (!entityCommandsUtility.UserHasWriteRowPermissionsAfterSave(insertItems, updateItems))
                 return StatusCode((int)HttpStatusCode.Forbidden, "Not allowed (write row permissions on new data).");
 
