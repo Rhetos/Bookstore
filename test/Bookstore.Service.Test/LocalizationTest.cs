@@ -1,6 +1,8 @@
 ﻿using Bookstore.Service.Test.Tools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhetos.Utilities;
+using System.Globalization;
+using System.Threading;
 
 namespace Bookstore.Service.Test
 {
@@ -26,6 +28,34 @@ namespace Bookstore.Service.Test
                 Assert.AreEqual("Author", defaultLocalizer["AuthorID"]);
                 Assert.AreEqual("Author", commentLocalizer["AuthorID"]);
                 Assert.AreEqual("Author of the book", bookLocalizer["AuthorID"]);
+            }
+        }
+
+        [TestMethod]
+        public void LocalizationTextDefaultLanguage()
+        {
+            // Default language in unit tests is based on Thread.CurrentThread.CurrentUICulture,
+            // not on DefaultRequestCulture specified in Startup.cs or Program.cs.
+            using var scope = TestScope.Create();
+            var localizer = scope.Resolve<ILocalizer>();
+            Assert.AreEqual("Number of pages", localizer["NumberOfPages"]);
+        }
+
+        [TestMethod]
+        public void LocalizationTextOverrideLanguage()
+        {
+            var oldCulture = Thread.CurrentThread.CurrentUICulture;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("hr-HR");
+            // Based on CurrentUICulture, localization will use hr.po instead of en.po.
+            try
+            {
+                using var scope = TestScope.Create();
+                var localizer = scope.Resolve<ILocalizer>();
+                Assert.AreEqual("Broj stranica", localizer["NumberOfPages"]);
+            }
+            finally
+            {
+                Thread.CurrentThread.CurrentUICulture = oldCulture;
             }
         }
     }
