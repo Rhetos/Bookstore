@@ -25,15 +25,16 @@ namespace Bookstore.Service.Test.Tools
         /// </remarks>
         public static IUnitOfWorkScope Create(Action<ContainerBuilder> registerCustomComponents = null)
         {
-            ConsoleLogger.MinLevel = EventType.Info; // Use EventType.Trace for more detailed log.
-            return _rhetosHost.CreateScope(registerCustomComponents);
+            return _rhetosHost.Value.CreateScope(registerCustomComponents);
         }
+
+        private const string RhetosAppPath = @"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll";
 
         /// <summary>
         /// Reusing a single shared static DI container between tests, to reduce initialization time for each test.
         /// Each test should create a child scope with <see cref="TestScope.Create"/> method to start a 'using' block.
         /// </summary>
-        private static readonly RhetosHost _rhetosHost = RhetosHost.CreateFrom(Path.GetFullPath(@"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll"), ConfigureRhetosHostBuilder);
+        private static readonly Lazy<RhetosHost> _rhetosHost = new(() => RhetosHost.CreateFrom(RhetosAppPath, ConfigureRhetosHostBuilder));
 
         private static void ConfigureRhetosHostBuilder(IRhetosHostBuilder rhetosHostBuilder)
         {
