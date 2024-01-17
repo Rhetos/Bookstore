@@ -37,16 +37,8 @@ namespace Bookstore.Service
                 c.SwaggerDoc("rhetos", new OpenApiInfo { Title = "Rhetos REST API", Version = "v1" });
             });
 
-            // Using NewtonsoftJson for backward-compatibility with older versions of Rhetos.RestGenerator:
-            // legacy Microsoft DateTime serialization and
-            // byte[] serialization as JSON array of integers instead of Base64 string.
-            services.AddControllers()
-                .AddNewtonsoftJson(o =>
-                {
-                    o.UseMemberCasing();
-                    o.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat;
-                    o.SerializerSettings.Converters.Add(new Rhetos.Host.AspNet.RestApi.Utilities.ByteArrayConverter());
-                });
+            // Customizing web API so that the letter case matches the backend model.
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             // Adding Rhetos to AspNetCore application.
             services.AddRhetosHost(ConfigureRhetosHostBuilder)
