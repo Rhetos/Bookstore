@@ -16,14 +16,14 @@
     <copyright>Copyright Omega software 2018</copyright>
     <tags>Rhetos plugin</tags>
     <dependencies>
-      <dependency id="Rhetos.CommonConcepts" version="5.2.0" />
+      <dependency id="Rhetos.MsSqlEf6" version="6.0.0-dev24011711054c6feb" />
     </dependencies>
   </metadata>
   <files>
     <file src="..\Readme.md" target="" />
     <file src="Bookstore.Service\DslScripts\**\*" target="DslScripts" />
     <file src="Bookstore.Service\DataMigration\**\*" target="DataMigration" />
-    <file src="Bookstore.RhetosExtensions\bin\Debug\net5.0\Bookstore.RhetosExtensions.pdb" target="lib\net5.0" />
-    <file src="Bookstore.RhetosExtensions\bin\Debug\net5.0\Bookstore.RhetosExtensions.dll" target="lib\net5.0" />
+    <file src="Bookstore.RhetosExtensions\bin\Debug\net8.0\Bookstore.RhetosExtensions.pdb" target="lib\net8.0" />
+    <file src="Bookstore.RhetosExtensions\bin\Debug\net8.0\Bookstore.RhetosExtensions.dll" target="lib\net8.0" />
   </files>
 </package>

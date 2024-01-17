@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 .\tools\Build\Test-RhetosPrerequisites.ps1
 
 "=== Deploy: Database update ==="
-& '.\src\Bookstore.Service\bin\Debug\net5.0\rhetos.exe' dbupdate '.\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll'
+& '.\src\Bookstore.Service\bin\Debug\net8.0\rhetos.exe' dbupdate '.\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.Service.dll'
 if ($LastExitCode -ne 0) { throw "rhetos dbupdate failed." }
 
 "=== Run all tests ==="

@@ -28,7 +28,7 @@ namespace Bookstore.Service.Test.Tools
             return _rhetosHost.Value.CreateScope(registerCustomComponents);
         }
 
-        private const string RhetosAppPath = @"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net5.0\Bookstore.Service.dll";
+        private const string RhetosAppPath = @"..\..\..\..\..\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.Service.dll";
 
         /// <summary>
         /// Reusing a single shared static DI container between tests, to reduce initialization time for each test.

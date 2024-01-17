@@ -102,7 +102,7 @@ Module Bookstore
 
         ComposableFilterBy LongReviews '(query, repository, parameter) =>
             {
-                int minLength = _configuration.GetInt("Bookstore.LongReviewsMinLength", 10).Value;
+                int minLength = _configuration.GetValue("Bookstore.LongReviewsMinLength", 10);
                 return query.Where(r => r.Text.Length >= minLength);
             }';
 
