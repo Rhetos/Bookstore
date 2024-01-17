@@ -47,6 +47,7 @@ namespace Bookstore.Service
                 .AddHostLocalization()
                 .AddImpersonation()
                 .AddDashboard()
+                .AddLightDMS()
                 .AddRestApi(o =>
                 {
                     o.BaseRoute = "rest";
