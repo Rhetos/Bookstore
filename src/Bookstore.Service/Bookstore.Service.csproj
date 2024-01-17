@@ -9,6 +9,7 @@
     <PackageReference Include="OrchardCore.Localization.Core" Version="1.8.1" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
     <PackageReference Include="NLog" Version="5.2.8" />
+    <PackageReference Include="Rhetos.AfterDeploy" Version="6.0.0-dev24011717272b30776" />
     <PackageReference Include="Rhetos.CommonConcepts" Version="6.0.0-dev24011711054c6feb" />
     <PackageReference Include="Rhetos.Host.AspNet.Impersonation" Version="6.0.0-dev2401171225714f6f3" />
     <PackageReference Include="Rhetos.Host.AspNet" Version="6.0.0-dev24011711054c6feb" />
