@@ -1,47 +1,26 @@
 <Query Kind="Program">
-  <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.dll">Bookstore.Service.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.deps.json">Bookstore.Service.deps.json</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Bookstore.Service.runtimeconfig.json">Bookstore.Service.runtimeconfig.json</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Bookstore.RhetosExtensions.dll">Bookstore.RhetosExtensions.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\EntityFramework.dll">..\EntityFramework.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\EntityFramework.SqlServer.dll">..\EntityFramework.SqlServer.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll">..\Microsoft.CodeAnalysis.CSharp.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll">..\Microsoft.CodeAnalysis.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Microsoft.Win32.SystemEvents.dll">..\Microsoft.Win32.SystemEvents.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Newtonsoft.Json.dll">..\Newtonsoft.Json.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\NLog.dll">..\NLog.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Oracle.ManagedDataAccess.dll">..\Oracle.ManagedDataAccess.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Compiler.dll">..\Rhetos.Compiler.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Compiler.Interfaces.dll">..\Rhetos.Compiler.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Configuration.Autofac.dll">..\Rhetos.Configuration.Autofac.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.DatabaseGenerator.DefaultConcepts.dll">..\Rhetos.DatabaseGenerator.DefaultConcepts.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.DatabaseGenerator.dll">..\Rhetos.DatabaseGenerator.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.DatabaseGenerator.Interfaces.dll">..\Rhetos.DatabaseGenerator.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Deployment.dll">..\Rhetos.Deployment.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Deployment.Interfaces.dll">..\Rhetos.Deployment.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dom.DefaultConcepts.dll">..\Rhetos.Dom.DefaultConcepts.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dom.DefaultConcepts.Interfaces.dll">..\Rhetos.Dom.DefaultConcepts.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dom.dll">..\Rhetos.Dom.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dom.Interfaces.dll">..\Rhetos.Dom.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dsl.DefaultConcepts.dll">..\Rhetos.Dsl.DefaultConcepts.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dsl.dll">..\Rhetos.Dsl.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Dsl.Interfaces.dll">..\Rhetos.Dsl.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Extensibility.dll">..\Rhetos.Extensibility.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Extensibility.Interfaces.dll">..\Rhetos.Extensibility.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Logging.dll">..\Rhetos.Logging.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Logging.Interfaces.dll">..\Rhetos.Logging.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Persistence.dll">..\Rhetos.Persistence.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Persistence.Interfaces.dll">..\Rhetos.Persistence.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Processing.DefaultCommands.dll">..\Rhetos.Processing.DefaultCommands.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Processing.DefaultCommands.Interfaces.dll">..\Rhetos.Processing.DefaultCommands.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Processing.dll">..\Rhetos.Processing.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Processing.Interfaces.dll">..\Rhetos.Processing.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Security.dll">..\Rhetos.Security.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Security.Interfaces.dll">..\Rhetos.Security.Interfaces.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.Utilities.dll">..\Rhetos.Utilities.dll</Reference>
-  <Reference Relative="..\bin\Debug\net5.0\Rhetos.XmlSerialization.dll">..\Rhetos.XmlSerialization.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Bookstore.Service.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.Service.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Bookstore.Service.deps.json">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.Service.deps.json</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Bookstore.Service.runtimeconfig.json">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.Service.runtimeconfig.json</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Bookstore.RhetosExtensions.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Bookstore.RhetosExtensions.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\EntityFramework.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\EntityFramework.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\EntityFramework.SqlServer.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\EntityFramework.SqlServer.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Autofac.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Autofac.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Newtonsoft.Json.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Newtonsoft.Json.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\NLog.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\NLog.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Rhetos.CommonConcepts.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Rhetos.CommonConcepts.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Rhetos.Core.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Rhetos.Core.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Rhetos.Core.DslParser.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Rhetos.Core.DslParser.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\Rhetos.Core.Integration.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\Rhetos.Core.Integration.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll</Reference>
+  <Reference>..\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll</Reference>
+  <Reference>..\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll</Reference>
+  <Reference Relative="..\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll">C:\My Projects\RhetosPackages\Bookstore\src\Bookstore.Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll</Reference>
   <Namespace>Autofac</Namespace>
-  <Namespace>Oracle.ManagedDataAccess.Client</Namespace>
   <Namespace>Rhetos</Namespace>
   <Namespace>Rhetos.Configuration.Autofac</Namespace>
   <Namespace>Rhetos.Dom</Namespace>
@@ -50,16 +29,18 @@
   <Namespace>Rhetos.Dsl.DefaultConcepts</Namespace>
   <Namespace>Rhetos.Logging</Namespace>
   <Namespace>Rhetos.Persistence</Namespace>
+  <Namespace>Rhetos.Processing</Namespace>
+  <Namespace>Rhetos.Processing.DefaultCommands</Namespace>
   <Namespace>Rhetos.Security</Namespace>
   <Namespace>Rhetos.Utilities</Namespace>
   <Namespace>System.Data.Entity</Namespace>
   <Namespace>System.DirectoryServices</Namespace>
   <Namespace>System.Runtime.Serialization.Json</Namespace>
-  <Namespace>System.Xml.Serialization</Namespace>
+  <IncludeAspNet>true</IncludeAspNet>
 </Query>
 
 /*
-This script is written for Rhetos v5, run in LINQPad v6.
+The code in this script is writted for Rhetos v5 and higher.
 
 It reports all records from database that contain some invalid data, based on InvalidData concepts in DSL scritps.
 
@@ -68,7 +49,7 @@ In order to be useful on large applications, this script should be extended to h
 
 void Main()
 {
-	string rhetosHostAssemblyPath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), @"..\bin\Debug\net5.0\Bookstore.Service.dll");
+	string rhetosHostAssemblyPath = Path.Combine(Path.GetDirectoryName(Util.CurrentQueryPath), @"..\bin\Debug\net8.0\Bookstore.Service.dll");
 	using (var scope = LinqPadRhetosHost.CreateScope(rhetosHostAssemblyPath))
 	{
 		var dslModel = scope.Resolve<IDslModel>();
