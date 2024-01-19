@@ -1,0 +1,13 @@
+// This script contains examples for https://www.nuget.org/packages/Rhetos.ComplexEntity
+
+Module Bookstore
+{
+    ComplexStructure BookComplex Bookstore.Book
+    {
+        Detail Bookstore.Comment Comments;
+        Extension Bookstore.ForeignBook ForeignBook;
+
+        CreateGet;
+        CreateSave;
+    }
+}

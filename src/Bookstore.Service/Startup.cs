@@ -48,6 +48,7 @@ namespace Bookstore.Service
                 .AddImpersonation()
                 .AddDashboard()
                 .AddLightDMS()
+                .AddComplexEntity()
                 .AddRestApi(o =>
                 {
                     o.BaseRoute = "rest";
