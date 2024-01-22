@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,6 +12,7 @@
     <PackageReference Include="Rhetos.AfterDeploy" Version="6.0.0-dev24011717272b30776" />
     <PackageReference Include="Rhetos.CommonConcepts" Version="6.0.0-dev24011711054c6feb" />
     <PackageReference Include="Rhetos.ComplexEntity" Version="6.0.0-dev2401191129eef6f59" />
+    <PackageReference Include="Rhetos.FloydExtensions" Version="6.0.0-dev24012216456f5705" />
     <PackageReference Include="Rhetos.Host.AspNet.Impersonation" Version="6.0.0-dev2401171225714f6f3" />
     <PackageReference Include="Rhetos.Host.AspNet" Version="6.0.0-dev24011711054c6feb" />
     <PackageReference Include="Rhetos.Host" Version="6.0.0-dev24011711054c6feb" />
