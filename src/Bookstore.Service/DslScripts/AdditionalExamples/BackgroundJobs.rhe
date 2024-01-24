@@ -1,0 +1,35 @@
+Module Bookstore
+{
+    Entity BookAnalysis
+    {
+        Reference Book; // Inserting a new BookAnalysis with a BookID will create a background job to execute the Action AnalyzeBook.
+        ShortString Result; // After the background job completes, the result of the book analysis will be written here.
+
+        SaveMethod
+        {
+            AfterSave EnqueueBookAnalysis // Create the background job.
+            "
+                foreach (var insertedItem in insertedNew)
+                {
+                    var action = new Bookstore.AnalyzeBook { BookAnalysisID = insertedItem.ID };
+                    _backgroundJob.EnqueueAction(action, executeInUserContext: false, optimizeDuplicates: true);
+                }
+            ";
+        }
+
+        RepositoryUses _backgroundJob 'Rhetos.Jobs.IBackgroundJobs';
+    }
+
+    Action AnalyzeBook
+        '(parameter, repository, userInfo) =>
+        {
+            // This method simulates a background job that takes 5 seconds to compute the report with the book title length.
+            System.Threading.Thread.Sleep(5000);
+            var analysis = _domRepository.Bookstore.BookAnalysis.Query(new[] { parameter.BookAnalysisID.Value }).Single();
+            analysis.Result = $"Title length is {analysis.Book.Title.Length}.";
+            _domRepository.Bookstore.BookAnalysis.Update(analysis);
+        }'
+    {
+        Guid BookAnalysisID;
+    }
+}

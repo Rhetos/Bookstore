@@ -12,6 +12,8 @@ using Rhetos;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bookstore.Service
@@ -49,6 +51,7 @@ namespace Bookstore.Service
                 .AddDashboard()
                 .AddLightDMS()
                 .AddComplexEntity()
+                .AddJobsHangfire()
                 .AddRestApi(o =>
                 {
                     o.BaseRoute = "rest";
@@ -83,6 +86,9 @@ namespace Bookstore.Service
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestApp v1");
                 });
             }
+
+            app.UseRhetosJobsFromConfiguration(); // Initialize recurring jobs.
+            app.UseRhetosHangfireServer(); // Start background job processing in current application.
 
             app.UseRhetosRestApi();
 

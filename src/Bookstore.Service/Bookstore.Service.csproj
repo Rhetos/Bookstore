@@ -17,6 +17,8 @@
     <PackageReference Include="Rhetos.Host.AspNet" Version="6.0.0-dev24011711054c6feb" />
     <PackageReference Include="Rhetos.Host" Version="6.0.0-dev24011711054c6feb" />
     <PackageReference Include="Rhetos.Impersonation" Version="6.0.0-dev2401171225714f6f3" />
+    <PackageReference Include="Rhetos.Jobs.Abstractions" Version="6.0.0-dev2401241504bea791f" />
+    <PackageReference Include="Rhetos.Jobs.Hangfire" Version="6.0.0-dev2401241504bea791f" />
     <PackageReference Include="Rhetos.LightDMS" Version="6.0.0-dev24011717418aefdcf" />
     <PackageReference Include="Rhetos.LogArchive" Version="4.0.0-dev240122172349beef8" />
     <PackageReference Include="Rhetos.MSBuild" Version="6.0.0-dev24011711054c6feb" />
