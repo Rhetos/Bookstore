@@ -1,0 +1,22 @@
+﻿// This script contains examples of a custom DSL concept that extends the Rhetos DSL programming language.
+// The CodeTable concept is implemented in project "Bookstore.RhetosExtensions", file "CodeTable.cs"
+// For more info on custom DSL concepts see https://github.com/Rhetos/Rhetos/wiki/Rhetos-concept-development
+
+Module Bookstore
+{
+    Entity BookClass
+    {
+        CodeTable;
+        // CodeTable is a custom DSL concept that generates the following 4 DSL statements:
+        // ShortString Code { AutoCode; }
+        // ShortString Name { Required; }
+
+        LongString Description;
+        Logging { AllProperties; }
+    }
+
+    Entity Country
+    {
+        CodeTable;
+    }
+}
