@@ -18,10 +18,10 @@ Module Bookstore
 
         ItemFilter LongBooks 'item => item.NumberOfPages >= 500';
 
-        ItemFilter ForeignAuthorXWithComments 'item =>
+        ItemFilter ForeignAuthorXWithChapters 'item =>
             item.Author.Name.StartsWith("X")
             && item.Extension_ForeignBook.ID != null
-            && _domRepository.Bookstore.Comment.Subquery.Where(c => c.BookID == item.ID).Count() >= 3';
+            && _domRepository.Bookstore.Chapter.Subquery.Where(c => c.BookID == item.ID).Count() >= 3';
     }
 
     Entity Person
@@ -35,10 +35,10 @@ Module Bookstore
         ShortString OriginalLanguage;
     }
 
-    Entity Comment
+    Entity Chapter
     {
         Reference Book { Detail; }
-        LongString Text;
+        LongString Heading;
     }
 }
 
@@ -132,7 +132,7 @@ Module Bookstore
         Take 'Author.Name';
         Take TranslatorName 'Extension_ForeignBook.Translator.Name';
         Take Description 'Extension_BookDescription.Description';
-        Take NumberOfComments 'Extension_BookInfo.NumberOfComments';
+        Take NumberOfChapters 'Extension_BookInfo.NumberOfChapters';
 
         // This query is an alternative data source for BookGrid.
         // Instead of reading data from the `Bookstore.Book`, it provides the new data from WantedBooks.
@@ -151,7 +151,7 @@ Module Bookstore
                     AuthorName = "unknown",
                     TranslatorName = null,
                     Description = null,
-                    NumberOfComments = null
+                    NumberOfChapters = null
                 });
                 return wantedBooks;
             }';

@@ -1,19 +1,19 @@
 Module Bookstore
 {
-    Computed CommentDTO 'repository => this.Load(new SearchText { Pattern = "" }).ToArray()'
+    Computed ChapterDTO 'repository => this.Load(new SearchText { Pattern = "" }).ToArray()'
     {
-        LongString Text;
-        ComplexProperty Book Bookstore.Book; // Web response for CommentDTO will include a whole Book as a nested object.
+        LongString Heading;
+        ComplexProperty Book Bookstore.Book; // Web response for ChapterDTO will include a whole Book as a nested object.
 
         FilterBy SearchText '(repository, parameter) =>
         {
-            return repository.Bookstore.Comment
-                .Query(comment => comment.Text.Contains(parameter.Pattern))
-                .Select(comment => new CommentDTO
+            return repository.Bookstore.Chapter
+                .Query(chapter => chapter.Heading.Contains(parameter.Pattern))
+                .Select(chapter => new ChapterDTO
                 {
-                    ID = comment.ID,
-                    Text = comment.Text,
-                    Book = comment.Book
+                    ID = chapter.ID,
+                    Heading = chapter.Heading,
+                    Book = chapter.Book
                 })
                 .ToArray();
         }';

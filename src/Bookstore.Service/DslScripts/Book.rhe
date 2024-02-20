@@ -31,10 +31,10 @@ Module Bookstore
     // (the user enters the data together on the same form).
     // It adds Required and CascadeDelete to the reference, and inherits parent's row permissions.
 
-    Entity Comment
+    Entity Chapter
     {
         Reference Book { Detail; }
-        LongString Text;
+        LongString Heading;
     }
 
     //==============================================================
@@ -88,7 +88,7 @@ Module Bookstore
         Take 'Author.Name';
         Take TranslatorName 'Extension_ForeignBook.Translator.Name';
         Take Description 'Extension_BookDescription.Description';
-        Take NumberOfComments 'Extension_BookInfo.NumberOfComments';
+        Take NumberOfChapters 'Extension_BookInfo.NumberOfChapters';
     }
 
     SqlQueryable BookDescription <SQL\BookDescription.sql>

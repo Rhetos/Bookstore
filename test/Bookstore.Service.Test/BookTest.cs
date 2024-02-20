@@ -16,11 +16,11 @@ namespace Bookstore.Service.Test
     public class BookTest
     {
         /// <summary>
-        /// BookInfo.NumberOfComments is persisted in a cache table and should be automatically updated
-        /// each a comment is added or deleted.
+        /// BookInfo.NumberOfChapters is persisted in a cache table and should be automatically updated
+        /// when a chapter is added or deleted.
         /// </summary>
         [TestMethod]
-        public void AutomaticallyUpdateNumberOfComments()
+        public void AutomaticallyUpdateNumberOfChapters()
         {
             using (var scope = TestScope.Create())
             {
@@ -29,28 +29,28 @@ namespace Bookstore.Service.Test
                 var book = new Book { Title = Guid.NewGuid().ToString() };
                 repository.Bookstore.Book.Insert(book);
 
-                int? readNumberOfComments() => repository.Bookstore.BookInfo
+                int? readNumberOfChapters() => repository.Bookstore.BookInfo
                     .Query(bi => bi.ID == book.ID)
-                    .Select(bi => bi.NumberOfComments)
+                    .Select(bi => bi.NumberOfChapters)
                     .Single();
 
-                Assert.AreEqual(0, readNumberOfComments());
+                Assert.AreEqual(0, readNumberOfChapters());
 
-                var c1 = new Comment { BookID = book.ID, Text = "c1" };
-                var c2 = new Comment { BookID = book.ID, Text = "c2" };
-                var c3 = new Comment { BookID = book.ID, Text = "c3" };
+                var c1 = new Chapter { BookID = book.ID, Heading = "c1" };
+                var c2 = new Chapter { BookID = book.ID, Heading = "c2" };
+                var c3 = new Chapter { BookID = book.ID, Heading = "c3" };
 
-                repository.Bookstore.Comment.Insert(c1);
-                Assert.AreEqual(1, readNumberOfComments());
+                repository.Bookstore.Chapter.Insert(c1);
+                Assert.AreEqual(1, readNumberOfChapters());
 
-                repository.Bookstore.Comment.Insert(c2, c3);
-                Assert.AreEqual(3, readNumberOfComments());
+                repository.Bookstore.Chapter.Insert(c2, c3);
+                Assert.AreEqual(3, readNumberOfChapters());
 
-                repository.Bookstore.Comment.Delete(c1);
-                Assert.AreEqual(2, readNumberOfComments());
+                repository.Bookstore.Chapter.Delete(c1);
+                Assert.AreEqual(2, readNumberOfChapters());
 
-                repository.Bookstore.Comment.Delete(c2, c3);
-                Assert.AreEqual(0, readNumberOfComments());
+                repository.Bookstore.Chapter.Delete(c2, c3);
+                Assert.AreEqual(0, readNumberOfChapters());
             }
         }
 

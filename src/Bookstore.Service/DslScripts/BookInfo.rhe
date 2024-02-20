@@ -8,9 +8,9 @@ Module Bookstore
     SqlQueryable ComputeBookInfo <SQL\ComputeBookInfo.sql>
     {
         Extends Bookstore.Book;
-        Integer NumberOfComments;
+        Integer NumberOfChapters;
 
-        ChangesOnLinkedItems Bookstore.Comment.Book;
+        ChangesOnLinkedItems Bookstore.Chapter.Book;
     }
 
     Entity BookInfo
