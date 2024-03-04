@@ -15,7 +15,7 @@ namespace Bookstore.Service.Controllers
     /// </summary>
     [Route("rest/Bookstore/Book/[action]")] // Same base root as generic Rhetos REST controller.
     [ServiceFilter(typeof(ApiExceptionFilter))] // Same error response format as Rhetos REST (UserMessage and SystemMessage). Optional.
-    [ServiceFilter(typeof(ApiCommitOnSuccessFilter))] // Automatically commit unit of work on response 200, rollback otherwise. Optional.
+    [ServiceFilter(typeof(ApiCommitOnSuccessFilter))] // Automatically commit the unit of work on response 200, rollback otherwise. Optional.
     [ApiExplorerSettings(GroupName = "v1")] // Avoids overriding Swagger information on Rhetos REST (optional) by using a separate document for custom methods. Optional.
     public class BookController : ControllerBase
     {
