@@ -10,6 +10,7 @@ Module Bookstore
 
         ShortString Code { AutoCode; }
         ShortString Title { Required; }
+        DateTime PublishDate;
         Integer NumberOfPages;
         Reference Author Bookstore.Person; // "1 : N" relation (the database foreign key column name is "AutorID")
 

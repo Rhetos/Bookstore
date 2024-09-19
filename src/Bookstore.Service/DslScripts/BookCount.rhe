@@ -1,0 +1,15 @@
+﻿Module Bookstore
+{
+    Computed BookCount 'repository => throw new Rhetos.UserException("Nisu zadani parametri filtera.")'
+    {
+        Integer Count;
+
+        Load BookCountFilter;
+    }
+
+    Parameter BookCountFilter
+    {
+        DateTime Od;
+        DateTime Do;
+    }
+}
