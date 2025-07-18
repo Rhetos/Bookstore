@@ -69,6 +69,8 @@ Module Bookstore
             Implements Bookstore.SalesItem.Description "Title + ISNULL(', ' + (SELECT Name FROM Bookstore.Person WHERE ID = Bookstore.Book.AuthorID), '')";
                 
             Where 'Price IS NOT NULL';
+
+            SqlDependsOn Bookstore.Person.Name;
         }
     }
 
